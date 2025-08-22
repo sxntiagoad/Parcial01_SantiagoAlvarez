@@ -12,6 +12,7 @@ class Vuelo(models.Model):
     nombre_vuelo = models.CharField(max_length=100, unique=True)
     tipo = models.CharField(max_length=50, choices=TIPO_VUELO)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-
+    
+    #este es solo pa verlo en el admin site
     def __str__(self):
-        return f"Vuelo {self.nombre_vuelo} ({self.tipo})"
+        return f"Vuelo con nombre:::: {self.nombre_vuelo} ({self.tipo})"

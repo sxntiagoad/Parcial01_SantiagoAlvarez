@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar vuelos</title>
+  <style>
+    .precio-nacional { color: #0a47ff; font-weight: 600; }
+    .nombre-internacional { font-weight: bold; }
+    .vuelo { margin-bottom: 10px; }
+    .no-data { font-style: italic; color:#666; }
+  </style>
+</head>
+<body>
+  <h2>Listado de vuelos</h2>
+  <a href="{% url 'vuelos:home' %}">Inicio</a> | 
+
+  {% if vuelos %}
+    {% for v in vuelos %}
+      <div class="vuelo">
+        ID: {{ v.id }} <br>
+        Nombre: <span class="{% if v.tipo == 'internacional' %}nombre-internacional{% endif %}">{{ v.nombre_vuelo }}</span><br>
+        Tipo: {{ v.get_tipo_display }} <br>
+        Precio: <span class="{% if v.tipo == 'nacional' %}precio-nacional{% endif %}">{{ v.precio }}</span>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="no-data">No hay vuelos registrados.</p>
+  {% endif %}
+</body>
+</html>

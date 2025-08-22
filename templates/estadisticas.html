@@ -14,7 +14,6 @@
     <li>Internacionales: {{ estadisticas.total_internacionales|default:0 }}</li>
     <li>Precio promedio (Nacionales):
       {% if estadisticas.promedio_nacional %}
-       /* presenta el dato del promedio con los dos decimales definidos tambn por como esta definido en el modelo*/
         {{ estadisticas.promedio_nacional|floatformat:2 }}
       {% else %}N/A{% endif %}
     </li>
